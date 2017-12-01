@@ -15,14 +15,13 @@ end
 
 def magic_number(input)
   number = input.to_i.abs
-  first_number = input.to_i.abs.humanize.split('')
-  first_number.reject! { |num| num == '-' || num == ',' }
-  if first_number.length == 4
-    puts "#{number} is #{first_number.length}, and 4 is the magic number.".green
+  human_number = number.humanize.split('').reject { |num| num == '-' || num == ',' }
+  if human_number.length == 4
+    puts "#{number} is #{human_number.length}, and 4 is the magic number.".green
     user_input
   else
-    puts "#{number} is #{first_number.length}".yellow
-    magic_number(first_number.length)
+    puts "#{number} is #{human_number.length}".yellow
+    magic_number(human_number.length)
   end
 end
 
